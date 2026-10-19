@@ -1,0 +1,75 @@
+@import "tailwindcss";
+
+/* ── Brand Theme ─────────────────────────────────────────────────────── */
+@theme {
+  --color-crimson-dark: #630505;
+  --color-crimson-red: #C3180D;
+  --color-obsidian: #000000;
+  --color-pure-white: #FFFFFF;
+
+  --font-sans: "Inter", "Inter Display", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Inter Tight", "Inter", ui-sans-serif, system-ui, sans-serif;
+}
+
+/* ── Base Reset & Canvas ─────────────────────────────────────────────── */
+html {
+  scroll-behavior: smooth;
+}
+
+html,
+body {
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--font-sans);
+  color: var(--color-pure-white);
+  background: radial-gradient(
+    circle at 50% 20%,
+    #7a0a0a 0%,
+    #630505 40%,
+    #150202 95%
+  );
+  min-height: 100vh;
+}
+
+/* ── Micro-noise Texture Overlay ─────────────────────────────────────── */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none;
+  mix-blend-mode: overlay;
+  opacity: 0.035;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+}
+
+/* ── Selection ───────────────────────────────────────────────────────── */
+::selection {
+  background: var(--color-crimson-red);
+  color: var(--color-pure-white);
+}
+
+/* ── Scrollbar (Webkit) ──────────────────────────────────────────────── */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(195, 24, 13, 0.4);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(195, 24, 13, 0.7);
+}
